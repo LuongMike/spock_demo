@@ -23,12 +23,13 @@
         </dependency>
 
         <!-- Groovy 4 -->
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy</artifactId>
-            <version>4.0.13</version>
-            <scope>test</scope>
-        </dependency>
+       <dependency>
+             <groupId>org.apache.groovy</groupId>
+             <artifactId>groovy</artifactId>
+             <version>4.0.4</version> <!-- hoặc 4.0.13 -->
+             <scope>test</scope>
+         </dependency>
+
 
         <!-- JUnit Platform (required for Spock 2+) -->
         <dependency>
