@@ -39,13 +39,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Allure Spock integration -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-spock</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
     <build>
