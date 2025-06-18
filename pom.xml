@@ -11,6 +11,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <allure.version>2.11.2</allure.version>
     </properties>
 
     <dependencies>
@@ -22,20 +23,27 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Groovy 4 -->
-       <dependency>
-             <groupId>org.apache.groovy</groupId>
-             <artifactId>groovy</artifactId>
-             <version>4.0.4</version> <!-- hoặc 4.0.13 -->
-             <scope>test</scope>
-         </dependency>
-
+        <!-- Groovy -->
+        <dependency>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>4.0.4</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- JUnit Platform (required for Spock 2+) -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
             <version>1.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Allure Spock integration -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-spock</artifactId>
+            <version>${allure.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -68,8 +76,28 @@
                         <include>**/*Test.*</include>
                         <include>**/*Spec.*</include>
                     </includes>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
+            </plugin>
+
+            <!-- Plugin tạo báo cáo Allure -->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
